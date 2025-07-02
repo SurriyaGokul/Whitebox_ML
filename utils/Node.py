@@ -1,10 +1,10 @@
 class Node:
     def __init__(
         self,
-        feature,
-        split_value,
-        node_type,
-        impurity,
+        feature = None,
+        split_value = None,
+        node_type = None,
+        impurity = None,
         prediction = False,
         left=None,
         right=None
