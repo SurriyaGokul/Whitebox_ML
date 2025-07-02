@@ -1,7 +1,11 @@
 import numpy as np
 from typing import Union
 import pandas as pd
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "../../")))
 from utils.Node import Node
+
 class DecisionTree:
     """
     A simple Decision Tree implementation written purely using numpy and pandas supporting both classification and regression tasks.
@@ -58,6 +62,7 @@ class DecisionTree:
     ):
         self.task = task
         self.max_depth = max_depth
+        self.metric = metric
         self.min_samples_split = min_samples_split
         self.max_features = max_features
         self.random_state = random_state
@@ -177,7 +182,7 @@ class DecisionTree:
     def fit(self, x, y, depth = 0):
 
         if len(np.unique(y)) == 1:
-            node = Node(prediction=y[0])
+            node = Node(prediction=y.iloc[0])
             return node
         
         df = x.copy()
